@@ -21,13 +21,7 @@ public class AppliancesTest {
 
             // (3)
             Appliances testAppliances = new Appliances(expectedId, expectedName, expectedType, expectedBrand, expectedSize, expectedQty, expectedPrice);
-            testAppliances.setId(expectedId);
-            testAppliances.setName(expectedName);
-            testAppliances.setType(expectedType);
-            testAppliances.setBrand(expectedBrand);
-            testAppliances.setSize(expectedSize);
-            testAppliances.setQty(expectedQty);
-            testAppliances.setPrice(expectedPrice);
+
 
             // (4)
             Assertions.assertEquals(expectedId, testAppliances.getId());

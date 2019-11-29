@@ -9,9 +9,7 @@ public class Furniture {
     private int qty;
     private float price;
 
-    public Furniture() {
-
-    }
+    public Furniture() { }
 
     public Furniture(int id, String name, String brand, String type, int size, int qty, float price) {
         this.id = id;
@@ -23,9 +21,7 @@ public class Furniture {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;
@@ -47,9 +43,7 @@ public class Furniture {
         this.brand = brand;
     }
 
-    public String getType() {
-        return type;
-    }
+    public String getType() { return type; }
 
     public void setType(String type) {
         this.type = type;

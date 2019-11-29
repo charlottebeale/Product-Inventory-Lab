@@ -1,18 +1,30 @@
 package services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.platform.commons.util.StringUtils;
-import org.opentest4j.AssertionFailedError;
+import org.junit.Before;
+import org.junit.After;
+import java.util.List;
 import models.Appliances;
+import java.util.ArrayList;
 
 public class AppliancesServiceTest {
+   List<models.Appliances> appliancesInventory;
+    AppliancesService appliancesService;
 
+    @Before
+    public void setUp() {
+        this.appliancesInventory = new ArrayList<>();
+        this.appliancesService = new AppliancesService();
+    }
+
+    @After
+    public void tearDown() {
+
+    }
 
         @Test
-        public void createTest(){
+         void createTest(){
 
-            // (1)
             String expectedName = "Stan Smith";
             String expectedBrand = "Adidas";
             String expectedType = "Tennis";
@@ -20,12 +32,9 @@ public class AppliancesServiceTest {
             int expectedQty = 10;
             float expectedPrice = 80.00f;
 
-            // (2)
-            AppliancesService appliancesService = new AppliancesService();
-            Appliances testAppliances = AppliancesService.create(expectedName, expectedBrand,
+            Appliances testAppliances = appliancesService.create(expectedName, expectedBrand,
                     expectedType, expectedSize, expectedQty, expectedPrice);
 
-            // (3)
             int actualId = testAppliances.getId();
             String actualName = testAppliances.getName();
             String actualBrand = testAppliances.getBrand();
@@ -44,5 +53,60 @@ public class AppliancesServiceTest {
             Assertions.assertEquals(expectedPrice, actualPrice);
 
         }
+
+
+        @Test
+
+        public void findTest(int id) {
+            String expectedName = "Stan Smith";
+            String expectedBrand = "Adidas";
+            String expectedType = "Tennis";
+            int expectedSize = 10;
+            int expectedQty = 10;
+            float expectedPrice = 80.00f;
+
+            Appliances testAppliances = appliancesService.create(expectedName, expectedBrand,
+                    expectedType, expectedSize, expectedQty, expectedPrice);
+            Appliances actual = appliancesService.findAppliances(1);
+            Assertions.assertEquals(actual, testAppliances);
+
+        }
+        @Test
+
+         void findAllTest() {
+            String expectedName = "Stan Smith";
+            String expectedBrand = "Adidas";
+            String expectedType = "Tennis";
+            int expectedSize = 10;
+            int expectedQty = 10;
+            float expectedPrice = 80.00f;
+
+            Appliances testAppliances = appliancesService.create(expectedName, expectedBrand,
+                    expectedType, expectedSize, expectedQty, expectedPrice);
+            Appliances[] actual = appliancesService.findAll();
+            Assertions.assertEquals(actual, appliancesInventory);
+
+        }
+
+        @Test
+         void deleteTest(int id) {
+            int expectedId = 34;
+            String expectedName = "Stan Smith";
+            String expectedBrand = "Adidas";
+            String expectedType = "Tennis";
+            int expectedSize = 10;
+            int expectedQty = 10;
+            float expectedPrice = 80.00f;
+
+            Appliances testAppliances = appliancesService.create(expectedName, expectedBrand,
+                    expectedType, expectedSize, expectedQty, expectedPrice);
+            Appliances actual = appliancesService.findAppliances(1);
+            Assertions.assertTrue(appliancesService.delete(1));
+
+        }
+
+
+
+
     }
 

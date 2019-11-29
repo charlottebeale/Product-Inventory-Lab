@@ -19,9 +19,7 @@ public class Appliances {
         this.price = price;
     }
 
-    public Appliances() {
-
-    }
+    public Appliances() { }
 
     public int getId() {
         return id;
